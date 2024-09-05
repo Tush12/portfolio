@@ -22,7 +22,6 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
-  opacity: 0.95;
 }
 
 header .container {
@@ -84,19 +83,16 @@ section h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  animation: fadeIn 2s;
 }
 
 .home h2 {
   font-size: 50px;
   margin-bottom: 10px;
-  animation: fadeInDown 1s;
 }
 
 .home p {
   font-size: 20px;
   margin-top: 0;
-  animation: fadeInUp 1s;
 }
 
 .about .content {
@@ -112,7 +108,6 @@ section h2 {
   height: 200px;
   margin: 20px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  animation: zoomIn 1s;
 }
 
 .profile-cards {
@@ -152,44 +147,38 @@ section h2 {
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .card:hover .overlay {
   opacity: 1;
 }
 
-.card h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 28px;
-  color: #e8491d;
-  margin-bottom: 20px;
+.card:hover img {
+  transform: scale(1.05);
 }
 
-.card ul {
+.card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #e8491d;
+  margin-bottom: 10px;
+}
+
+.card ul, .card p {
   list-style: none;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
-}
-
-.card ul li {
-  margin: 10px 0;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
-}
-
-.card:hover img {
-  transform: scale(1.05);
+  margin-bottom: 20px;
 }
 
 .skills ul {
   list-style: none;
   padding: 0;
-  animation: fadeIn 2s;
 }
 
 .skills li {
@@ -216,7 +205,6 @@ section h2 {
   height: auto;
   margin: 20px 0;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  animation: zoomIn 1s;
 }
 
 .awards h3 {
@@ -224,7 +212,6 @@ section h2 {
   font-size: 28px;
   color: #e8491d;
   margin-bottom: 20px;
-  animation: fadeInDown 1s;
 }
 
 .awards ul {
@@ -233,7 +220,6 @@ section h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   color: #fff;
-  animation: fadeInUp 1s;
 }
 
 .awards ul li {
@@ -291,7 +277,7 @@ footer {
   transition: color 0.3s;
 }
 
-social-links a:hover {
+.social-links a:hover {
   color: #e8491d;
 }
 
@@ -309,11 +295,11 @@ social-links a:hover {
 
 .project-card {
   position: relative;
-  width: 300px;
+  width: 45%;
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -321,16 +307,6 @@ social-links a:hover {
   width: 100%;
   height: auto;
   transition: transform 0.3s;
-}
-
-.project-card video {
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card video:hover {
-  transform: scale(1.05);
 }
 
 .project-card .overlay {
@@ -347,20 +323,27 @@ social-links a:hover {
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .project-card:hover .overlay {
   opacity: 1;
 }
 
-.project-card .overlay h3 {
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-card h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   color: #e8491d;
   margin-bottom: 10px;
 }
 
-.project-card .overlay p {
+.project-card p {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   margin-bottom: 20px;
@@ -382,63 +365,23 @@ social-links a:hover {
   background-color: #bf3813;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+/* Video Container */
+.video-container {
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+  margin-top: 30px;
+  background-color: #111;
+  /* Ensure the video is not affected by hover effects */
+  z-index: 10;
 }
 
-.project-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.5);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 10; /* Ensure it sits above other elements */
 }
