@@ -13,6 +13,7 @@ body {
   margin: auto;
 }
 
+/* Header Styles */
 header {
   background: #222;
   color: #fff;
@@ -21,7 +22,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; /* Ensure header is on top */
 }
 
 header .container {
@@ -36,17 +37,18 @@ header h1 {
   margin: 0;
 }
 
-header nav ul {
+nav ul {
   list-style: none;
   padding: 0;
   display: flex;
+  gap: 20px;
 }
 
-header nav ul li {
-  margin: 0 15px;
+nav ul li {
+  margin: 0;
 }
 
-header nav ul li a {
+nav ul li a {
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;
@@ -54,9 +56,66 @@ header nav ul li a {
   transition: color 0.3s;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
   color: #e8491d;
 }
+
+/* Hamburger Menu Button for Mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1100; /* Ensure it's above the header */
+}
+
+.menu-toggle span {
+  background: #fff;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  /* Hide the full menu on mobile */
+  #nav-menu {
+    display: none; /* Initially hide the menu */
+  }
+
+  /* Show the menu when toggled */
+  #nav-menu.show {
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+  }
+
+  /* Display the hamburger menu icon on mobile */
+  .menu-toggle {
+    display: flex;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+}
+
+/* Animation for the Hamburger Menu */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
 
 section {
   padding: 100px 0 60px;
@@ -384,4 +443,51 @@ footer {
   height: 100%;
   border-radius: 10px;
   z-index: 10; /* Ensure it sits above other elements */
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  /* Adjust container width */
+  .container {
+    width: 90%;
+  }
+
+  /* Stack header links vertically on small screens */
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Make text smaller for smaller screens */
+  section h2 {
+    font-size: 28px;
+  }
+
+  .home h2 {
+    font-size: 36px;
+  }
+
+  .home p {
+    font-size: 18px;
+  }
+
+  /* Stack cards vertically on mobile */
+  .profile-cards, .project-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card, .project-card {
+    width: 90%; /* Make cards full width on mobile */
+  }
+
+  /* Adjust button size on mobile */
+  .contact-form button {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+
+  .card h3, .project-card h3 {
+    font-size: 20px;
+  }
 }

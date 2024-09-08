@@ -1,3 +1,16 @@
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+// Event listener for hamburger menu click
+mobileMenu.addEventListener('click', function() {
+  // Toggle the visibility of the mobile menu
+  navMenu.classList.toggle('show'); // Toggle 'show' on #nav-menu
+
+  // Add animation to hamburger menu (turn it into an "X")
+  mobileMenu.classList.toggle('active');
+});
+
+
 document.getElementById('contact-form').addEventListener('submit', function(event) {
   event.preventDefault();
   alert('Message sent successfully!');
@@ -41,3 +54,4 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     }
   });
 });
+
