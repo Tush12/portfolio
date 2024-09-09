@@ -66,6 +66,8 @@ nav ul li a:hover {
   flex-direction: column;
   cursor: pointer;
   z-index: 1100; /* Ensure it's above the header */
+  position: relative;
+  padding: 10px; /* Ensure clickable area is large enough */
 }
 
 .menu-toggle span {
@@ -77,22 +79,22 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
-  /* Hide the full menu on mobile */
+  /* Ensure the menu is on top and clickable */
   #nav-menu {
-    display: none; /* Initially hide the menu */
-  }
-
-  /* Show the menu when toggled */
-  #nav-menu.show {
-    display: block;
-    position: absolute;
-    top: 70px;
+    display: none; /* Initially hidden */
+    position: absolute; /* Position it absolutely */
+    top: 70px; /* Adjust based on your header height */
     left: 0;
     width: 100%;
-    background-color: #222;
+    background-color: #222; /* Ensure it's visible */
+    z-index: 1000; /* Ensure it's above other content */
   }
 
-  /* Display the hamburger menu icon on mobile */
+  #nav-menu.show {
+    display: block; /* Show when toggled */
+  }
+
+  /* Show the hamburger icon on mobile */
   .menu-toggle {
     display: flex;
   }
@@ -114,8 +116,6 @@ nav ul li a:hover {
 .menu-toggle.active span:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
-
-
 
 section {
   padding: 100px 0 60px;
@@ -334,11 +334,13 @@ footer {
   color: #fff;
   margin: 0 10px;
   transition: color 0.3s;
+  font-size: 24px; /* Increased size */
 }
 
 .social-links a:hover {
   color: #e8491d;
 }
+
 
 /* Projects Section */
 .projects {

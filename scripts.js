@@ -1,0 +1,71 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
+  const navLinks = navMenu.querySelectorAll('a'); // Select all links in the nav menu
+
+  // Toggle the mobile menu
+  mobileMenu.addEventListener('click', function() {
+    navMenu.classList.toggle('show'); // Toggle 'show' on #nav-menu
+    mobileMenu.classList.toggle('active'); // Add active class to hamburger
+  });
+
+  // Close the menu when clicking outside of it
+  document.addEventListener('click', function(event) {
+    if (!mobileMenu.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('show')) {
+      navMenu.classList.remove('show');
+      mobileMenu.classList.remove('active');
+    }
+  });
+
+  // Hide the menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navMenu.classList.remove('show'); // Hide the menu
+      mobileMenu.classList.remove('active'); // Reset hamburger icon
+    });
+  });
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  alert('Message sent successfully!');
+});
+
+window.addEventListener('scroll', function() {
+  var header = document.getElementById('header');
+  if (window.scrollY === 0) {
+    header.style.top = '0';
+  } else {
+    header.style.top = '-50px';
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Animate on scroll
+  const elements = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  fetch(this.action, {
+    method: 'POST',
+    body: new FormData(this),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      alert("Message sent successfully!");
+      this.reset();  // Reset the form after submission
+    } else {
+      alert("Oops! There was a problem sending your message.");
+    }
+  });
+});
