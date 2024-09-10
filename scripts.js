@@ -26,6 +26,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.getElementById('header');
+  let lastScrollY = window.scrollY;
+
+  // Add a scroll event listener
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > lastScrollY) {
+      // Scrolling down
+      header.style.top = `-${header.offsetHeight}px`; // Hide the header
+    } else {
+      // Scrolling up
+      header.style.top = '0'; // Show the header
+    }
+    lastScrollY = window.scrollY; // Update the last scroll position
+  });
+
+  // Add a mousemove event listener to detect when the mouse is near the top
+  window.addEventListener('mousemove', function(event) {
+    if (event.clientY <= 50) {
+      // Mouse is near the top of the page (within 50px)
+      header.style.top = '0'; // Show the header
+    }
+  });
+});
+
+
 document.getElementById('contact-form').addEventListener('submit', function(event) {
   event.preventDefault();
   alert('Message sent successfully!');
